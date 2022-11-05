@@ -42,7 +42,9 @@ module controller_tb;
     
 
     initial begin
-        reset <= 1; #22 ; reset <= 0;
+		$dumpfile("controller_tb.vcd");
+		$dumpvars;
+        reset <= 1; #10 ; reset <= 0;
     end
 
     always begin
@@ -51,10 +53,12 @@ module controller_tb;
     
 	initial begin
         #10;
+        // 20'b11100000010011110000
         Instr = 20'b11100000010011110000;   // MAIN     SUB R0, R15, R15     ; R0 = 0
         ALUFlags = 4'b0100;
+    
         #40;
-        Instr = 20'b11100010100000000010:   //          ADD R2, R0, #5       ; R2 = 5
+        Instr = 20'b11100010100000000010;   //          ADD R2, R0, #5       ; R2 = 5
         ALUFlags = 4'b0000;
         #40;
         Instr = 20'b11100010100000000011;   //          ADD R3, R0, #12      ; R3 = 12
@@ -120,6 +124,7 @@ module controller_tb;
         Instr = 20'b11100101100000000010;   // END      STR R2, [R0, #100] 	; mem[100] = 7
         ALUFlags = 4'b0000;
         #40;
+        $finish;
     end
 
     // Solo falta:

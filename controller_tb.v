@@ -73,22 +73,22 @@ module controller_tb;
         ALUFlags = 4'b0000;
         #40;
         Instr = 20'b11100000010101011000;   //          SUBS R8, R5, R7    	; R8 <= 11 - 3 = 8, set Flags
-        ALUFlags = 4'b0000;
+        ALUFlags = 4'b0010;
         #40;
         Instr = 20'b00001010000000000000;   //          BEQ END        		; shouldn't be taken 
         ALUFlags = 4'b0000;
-        #40;
+        #30;
         Instr = 20'b11100000010100111000;   //          SUBS R8, R3, R4    	; R8 = 12 - 7  = 5
         ALUFlags = 4'b0000;
         #40;
         Instr = 20'b10101010000000000000;   //          BGE AROUND       	; should be taken 
         ALUFlags = 4'b0000;
-        #40;
+        #30;
         Instr = 20'b11100010100000000101;   //          ADD R5, R0, #0     	; should be skipped
         ALUFlags = 4'b0000;
         #40;
         Instr = 20'b11100000010101111000;   // AROUND   SUBS R8, R7, R2   	; R8 = 3 - 5 = -2, set Flags
-        ALUFlags = 4'b0000;
+        ALUFlags = 4'b1000;
         #40;
         Instr = 20'b10110010100001010111;   //          ADDLT R7, R5, #1  	; R7 = 11 + 1 = 12
         ALUFlags = 4'b0000;
@@ -101,7 +101,7 @@ module controller_tb;
         #40;
         Instr = 20'b11100101100100000010;   //          LDR R2, [R0, #96]  	; R2 = mem[96] = 7
         ALUFlags = 4'b0000;
-        #40;
+        #50;
         Instr = 20'b11100000100011111111;   //          ADD R15, R15, R0	; PC <- PC + 8 (skips next)
         ALUFlags = 4'b0000;
         #40;
@@ -110,7 +110,7 @@ module controller_tb;
         #40;
         Instr = 20'b11101010000000000000;   //          B END             	; always taken
         ALUFlags = 4'b0000;
-        #40;
+        #30;
         Instr = 20'b11100010100000000010;   //          ADD R2, R0, #13   	; shouldn't happen
         ALUFlags = 4'b0000;
         #40;
@@ -123,7 +123,6 @@ module controller_tb;
     end
 
     // Solo falta:
-    // Colocar los intervalos precisos (los #) entre instrucciones (placeholder: todos son #40)
-    // Colocar los flags cuando lo requieran las instrucciones (placeholder: todos son 0000)
+    // Completar los flags (si es que faltan)
 
 endmodule

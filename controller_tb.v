@@ -52,7 +52,7 @@ module controller_tb;
 	initial begin
         #10
         Instr = 20'b11100000010011110000; 
-        ALUFlags = 4'b0000;
+        ALUFlags = 4'b0100;
         #40;
         // Completar aqui 
         // - las instrucciones en binaro estan el memfile.dat

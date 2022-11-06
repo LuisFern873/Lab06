@@ -131,3 +131,5 @@ module controller_tb;
     // Completar los flags (si es que faltan)
 
 endmodule
+
+// 11100101100100000010

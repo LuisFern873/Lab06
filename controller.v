@@ -249,9 +249,9 @@ module mainfsm (
 			EXECUTER: nextstate = ALUWB;
 			EXECUTEI: nextstate = ALUWB;
 			MEMADR: 
-				if(Funct[0]) nextstate = MEMRD;
-				else nextstate = MEMWR;
-			MEMRD: nextstate = MEMWR;
+				if(Funct[0]) nextstate = MEMRD; // LDR
+				else nextstate = MEMWR; // STR
+			MEMRD: nextstate = MEMWB;
 			default: nextstate = FETCH;
 		endcase
 
